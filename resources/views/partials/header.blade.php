@@ -11,10 +11,11 @@
             'active' => true,
         ],
         [
-            'url' => '/contatti',
-            'label' => 'Contatti',
-            'active' => false,
+            'url' => route('comics.index'),
+            'label' => 'Comics',
+            'active' => true,
         ],
+        
     ];
 @endphp
 
@@ -27,10 +28,6 @@
                         <a href="{{ $link['url'] }}">
                             {{ $link['label'] }}
                         </a>
-                    @else
-                        <del>
-                            {{ $link['label'] }}
-                        </del>
                     @endif
                 </li>
             @endforeach

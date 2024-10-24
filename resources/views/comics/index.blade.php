@@ -6,6 +6,13 @@
 <h1>
     Comics
 </h1>
+{{-- link alla pagina create --}}
+<div class="mb-3">
+  <a href="{{ route('comics.create') }}" class="btn btn-success">
+    + Aggiungi nuovo fumetto
+  </a>
+</div>
+
 <table class="table">
     <thead>
       <tr>

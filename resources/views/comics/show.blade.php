@@ -21,6 +21,28 @@
             <li>
               Prezzo: €{{ number_format($comic->price, 2, ',', '.') }}
             </li>
+            <li>
+              Artisti:
+              <ul>
+                {{-- decodifico la stringa json-> ciclo sul nuovo array --}}
+                @foreach(json_decode($comic->artists, true) as $artist)
+                  <li>
+                    {{ $artist }}
+                  </li>
+                @endforeach
+              </ul>
+            </li>
+            <li>
+              Scrittori:
+              <ul>
+                {{-- decodifico la stringa json-> ciclo sul nuovo array --}}
+                @foreach(json_decode($comic->writers, true) as $writer)
+                  <li>
+                    {{ $writer }}
+                  </li>
+                @endforeach
+              </ul>
+            </li>
           </ul>
           <p>
             {{ $comic->description }}
