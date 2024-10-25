@@ -51,7 +51,7 @@ class ComicController extends Controller
         $comic->thumb = $data['thumb'];
 
         //prendo il prezzo senza il simbolo di valuta
-        $priceNumber = floatval(substr($data['price'], 1));
+        $priceNumber = floatval($data['price']);
         //uso il numero
         $comic->price = $priceNumber;
 
@@ -66,6 +66,7 @@ class ComicController extends Controller
         $jsonArtists = json_encode($explodedArtists);
         //salvo l'array trasformato in stringa json
         $comic->artists = $jsonArtists;
+
 
         $explodedWriters = explode(',', $data['writers']);
         $jsonWriters = json_encode($explodedWriters);
@@ -96,6 +97,9 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
+        // dd($comic->artists);
+        // $artistsString = implode(',', json_decode($comic->artists));
+        // dd($artistsString);
         return view('comics.edit', compact('comic'));
         
     }
@@ -133,7 +137,7 @@ class ComicController extends Controller
         $explodedWriters = explode(',', $data['writers']);
         $jsonWriters = json_encode($explodedWriters);
         $comic->writers = $jsonWriters;
-
+        
         $comic->save();
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
