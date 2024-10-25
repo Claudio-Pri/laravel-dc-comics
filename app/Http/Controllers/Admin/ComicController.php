@@ -96,7 +96,8 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
+        
     }
 
     /**
@@ -104,7 +105,39 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+
+        $data = $request->all();
+        // dd($data);
+
+        $comic->title = $data['title'];
+        $comic->description = $data['description'];
+        $comic->thumb = $data['thumb'];
+
+        
+        $priceNumber = floatval($data['price']);
+        
+        $comic->price = $priceNumber;
+
+        $comic->series = $data['series'];
+        $comic->sale_date = $data['sale_date'];
+        $comic->type = $data['type'];
+
+        //ricevo una stringa separata da virgola
+        //esplodo la stringa sulle virgole
+        $explodedArtists = explode(',', $data['artists']);
+        //codifico il nuovo array
+        $jsonArtists = json_encode($explodedArtists);
+        //salvo l'array trasformato in stringa json
+        $comic->artists = $jsonArtists;
+
+        $explodedWriters = explode(',', $data['writers']);
+        $jsonWriters = json_encode($explodedWriters);
+        $comic->writers = $jsonWriters;
+
+        $comic->save();
+
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
+
     }
 
     /**

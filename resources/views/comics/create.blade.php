@@ -27,7 +27,7 @@
     {{-- prezzo --}}
     <div class="mb-3">
         <label for="price" class="form-label">Prezzo <span class="text-danger">*</span></label>
-        <input type="number" class="form-control" id="price" step="0.01" min="1" max="999.99" name="price" required placeholder="Inserisci il prezzo...">
+        <input type="number" class="form-control" id="price" step="0.01" min="0" max="999.99" name="price" required placeholder="Inserisci il prezzo...">
     </div>
     {{-- serie --}}
     <div class="mb-3">
