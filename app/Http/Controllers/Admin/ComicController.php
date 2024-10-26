@@ -35,10 +35,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //validazione dati qui
-        // $request->validate([
-        //     //
-        // ]);
+        //validazione dati qui (ripetere in update)
+        $request->validate([
+            'title' => 'required|min:3|max:128',
+            'description' => 'required|min:3',
+            'thumb' => 'nullable|url',
+            'price' => 'required|numeric|min:0|max:999.99',
+            'series' => 'required|min:3|max:64',
+            'sale_date' => 'nullable',
+            'type' => 'required|min:3|max:64',
+            'artists' => 'nullable',
+            'writers' => 'nullable',
+
+        ]);
+
+        // dd('validato con successo');
 
         //salvataggio del dato (form)
 
@@ -113,6 +124,19 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        //validazione dati qui
+        $request->validate([
+            'title' => 'required|min:3|max:128',
+            'description' => 'required|min:3',
+            'thumb' => 'nullable|url',
+            'price' => 'required|numeric|min:0|max:999.99',
+            'series' => 'required|min:3|max:64',
+            'sale_date' => 'nullable',
+            'type' => 'required|min:3|max:64',
+            'artists' => 'nullable',
+            'writers' => 'nullable',
+
+        ]);
 
         $data = $request->all();
         // dd($data);
