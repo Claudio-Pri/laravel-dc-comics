@@ -3,9 +3,16 @@
 @section('page-title', $comic->title)
 
 @section('main-content')
-<h1>
+<div class="container">
+  <h1>
     {{ $comic->title }}
 </h1>
+</div>
+<div class="container my-3">
+  <a href="{{ route('comics.edit', ['comic' => $comic->id ]) }}" class="btn btn-success">
+    Modifica
+</a>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-12">

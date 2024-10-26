@@ -35,7 +35,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //validazione dati
+        //validazione dati qui
         // $request->validate([
         //     //
         // ]);
@@ -44,8 +44,12 @@ class ComicController extends Controller
 
         $data = $request->all();
 
-        $comic = new Comic();
+        //opzione 2 mass assignment
+        // $comic = Comic::create($data);
 
+
+        //opzione 1
+        $comic = new Comic();
         $comic->title = $data['title'];
         $comic->description = $data['description'];
         $comic->thumb = $data['thumb'];
@@ -112,7 +116,11 @@ class ComicController extends Controller
 
         $data = $request->all();
         // dd($data);
+        //mass assignment
+        // $comic->update($data);
 
+
+        //opzione 1
         $comic->title = $data['title'];
         $comic->description = $data['description'];
         $comic->thumb = $data['thumb'];
@@ -149,6 +157,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        //doppia conferma su index
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }

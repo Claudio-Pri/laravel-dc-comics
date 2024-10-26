@@ -139,6 +139,8 @@
     </div>
 
     <button type="submit" class="btn btn-warning">Conferma modifica</button>
+
+    <a href="{{ route('comics.show', ['comic' => $comic->id])}}" class="btn btn-secondary">Annulla</a>
       
 </form>
 
