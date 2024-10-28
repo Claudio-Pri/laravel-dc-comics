@@ -36,7 +36,7 @@
             <a href="{{ route('comics.show', ['comic' => $comic->id ]) }}" class="btn btn-primary">
                 Dettagli
             </a>
-            <a href="{{ route('comics.edit', ['comic' => $comic->id ]) }}" class="btn btn-warning">
+            <a href="{{ route('comics.edit', ['comic' => $comic->id ]) }}" class="btn btn-outline-success">
                 Modifica
             </a>
             <form 

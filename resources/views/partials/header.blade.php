@@ -18,10 +18,18 @@
         
     ];
 @endphp
-
 <header>
-    <nav>
-        <ul>
+    <div class="header-top"></div>
+    <div class="container">
+      <div class="my-header d-flex py-3 align-items-center justify-content-between">
+        <div>
+          <a href="{{ $links[0]['url'] }}">
+            <img class="logo img-fluid" src="{{ asset('image/dc-logo.png') }}" alt="DC Logo">
+          </a>
+        </div>
+        {{-- nav menuLinks --}}
+        <nav>
+          <ul class="d-flex align-items-center">
             @foreach ($links as $link)
                 <li>
                     @if ($link['active'])
@@ -31,6 +39,8 @@
                     @endif
                 </li>
             @endforeach
-        </ul>
-    </nav>
-</header>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
